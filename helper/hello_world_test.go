@@ -12,6 +12,17 @@ import (
 // asertt => Fail
 // require => FailNow
 
+func TestSubTest(t *testing.T) {
+	t.Run("Gera1", func(t *testing.T) {
+		result := HelloWorld("Gera")
+		require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama 
+	})
+	t.Run("Gera2", func(t *testing.T) {
+		result := HelloWorld("Gera2")
+		require.Equal(t, "Hello, Gera2", result, "Result must be Hello, Gera2") // harus sama 
+	})
+}
+
 func TestMain(m *testing.M) {
 	// before 
 	fmt.Println("BEFORE UNIT TEST")
