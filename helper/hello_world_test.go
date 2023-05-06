@@ -11,20 +11,50 @@ import (
 
 // asertt => Fail
 // require => FailNow
+type Tests struct {
+	name, request, expected string
+}
+
+func TestTableHelloWorld(t *testing.T) {
+	tests := []Tests{
+		{
+			name:     "Gera",
+			request:  "Gera",
+			expected: "Hello, Gera",
+		},
+		{
+			name:     "Anggara",
+			request:  "Anggara",
+			expected: "Hello, Anggara",
+		},
+		{
+			name:     "Putra",
+			request:  "Putra",
+			expected: "Hello, Putrsa",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result, "Result must be Hello, " + test.name)
+		})
+	}
+}
 
 func TestSubTest(t *testing.T) {
 	t.Run("Gera1", func(t *testing.T) {
 		result := HelloWorld("Gera")
-		require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama 
+		require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama
 	})
 	t.Run("Gera2", func(t *testing.T) {
 		result := HelloWorld("Gera2")
-		require.Equal(t, "Hello, Gera2", result, "Result must be Hello, Gera2") // harus sama 
+		require.Equal(t, "Hello, Gera2", result, "Result must be Hello, Gera2") // harus sama
 	})
 }
 
 func TestMain(m *testing.M) {
-	// before 
+	// before
 	fmt.Println("BEFORE UNIT TEST")
 	m.Run()
 	// after
@@ -42,12 +72,12 @@ func TestSkip(t *testing.T) {
 
 func TestHelloWorldRequire(t *testing.T) {
 	result := HelloWorld("Gera")
-	require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama 
+	require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama
 	fmt.Println("TestHelloWorld with Require, Done")
 }
 func TestHelloWorldAssert1(t *testing.T) {
 	result := HelloWorld("Gera")
-	assert.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama 
+	assert.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama
 	fmt.Println("TestHelloWorld with Assert, Done")
 }
 func TestHelloWorldAssert2(t *testing.T) {
