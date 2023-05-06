@@ -12,6 +12,14 @@ import (
 // asertt => Fail
 // require => FailNow
 
+func TestMain(m *testing.M) {
+	// before 
+	fmt.Println("BEFORE UNIT TEST")
+	m.Run()
+	// after
+	fmt.Println("AFTER UNIT TEST")
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "darwin" {
 		t.Skip("Can not run on Mac Os")
@@ -23,7 +31,7 @@ func TestSkip(t *testing.T) {
 
 func TestHelloWorldRequire(t *testing.T) {
 	result := HelloWorld("Gera")
-	require.Equal(t, "Hell, Gera", result, "Result must be Hello, Gera") // harus sama 
+	require.Equal(t, "Hello, Gera", result, "Result must be Hello, Gera") // harus sama 
 	fmt.Println("TestHelloWorld with Require, Done")
 }
 func TestHelloWorldAssert1(t *testing.T) {
