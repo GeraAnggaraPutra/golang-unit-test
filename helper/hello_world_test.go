@@ -1,18 +1,23 @@
 package helper
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestHelloWorld(t *testing.T) {
-	result := HelloWorld("Gera")
-	if result != "Hello, Gera" {
-		// error
-		panic("Result is not 'Hello, Gera'")
-	}
-}
 func TestHelloWorldGera(t *testing.T) {
 	result := HelloWorld("Gera")
 	if result != "Hello, Gera" {
 		// error
-		panic("Result is not 'Hello, Gera'")
+		t.Error("Result harusnya 'Hello, Gera'")
 	}
+	fmt.Println("TestHelloWorldGera, Done")
+}
+func TestHelloWorldAnggara(t *testing.T) {
+	result := HelloWorld("Anggara")
+	if result != "Hello, Anggara" {
+		// error
+		t.Fatal("Result harusnya 'Hello, Anggara'")
+	}
+	fmt.Println("TestHelloWorldAnggara, Done")
 }
