@@ -12,6 +12,38 @@ import (
 // asertt => Fail
 // require => FailNow
 
+func BenchmarkTable(b *testing.B) {
+	benchmarks := []struct {
+		name    string
+		request string
+	}{
+		{
+			name:    "Gera",
+			request: "Gera",
+		},
+		{
+			name:    "Anggara",
+			request: "Anggara",
+		},
+		{
+			name:    "GeraAnggaraPutra",
+			request: "Gera Anggara Putra",
+		},
+		{
+			name:    "Budi",
+			request: "Budi Nugraha",
+		},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(benchmark.request)
+			}
+		})
+	}
+}
+
 func BenchmarkSub(b *testing.B) {
 	b.Run("Gera", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
