@@ -11,6 +11,19 @@ import (
 
 // asertt => Fail
 // require => FailNow
+
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Gera")
+	}
+}
+func BenchmarkHelloWorldAnggara(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Anggara")
+	}
+}
+
+
 type Tests struct {
 	name, request, expected string
 }
@@ -30,7 +43,7 @@ func TestTableHelloWorld(t *testing.T) {
 		{
 			name:     "Putra",
 			request:  "Putra",
-			expected: "Hello, Putrsa",
+			expected: "Hello, Putra",
 		},
 	}
 
