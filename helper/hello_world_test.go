@@ -12,6 +12,20 @@ import (
 // asertt => Fail
 // require => FailNow
 
+func BenchmarkSub(b *testing.B) {
+	b.Run("Gera", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Gera")
+		}
+	})
+	b.Run("Anggara", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Anggara")
+		}
+	})
+}
+
+
 func BenchmarkHelloWorld(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		HelloWorld("Gera")
